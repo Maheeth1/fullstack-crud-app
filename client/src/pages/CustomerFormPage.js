@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import CustomerForm from '../components/CustomerForm'; // Import the new component
+import CustomerForm from '../components/CustomerForm'; 
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const API_URL = 'http://localhost:5000/api';
 
@@ -40,7 +41,7 @@ function CustomerFormPage() {
 
     // Render loading state while fetching data for edit mode
     if (isEditMode && !initialData) {
-        return <p>Loading...</p>;
+        return <LoadingSpinner />;
     }
 
     return (

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoadingSpinner from './LoadingSpinner';
 
 function CustomerList({ customers, loading, handleDelete }) {
     if (loading) {
-        return <div className="text-center p-4">Loading...</div>;
+        return <LoadingSpinner />; 
     }
 
     if (customers.length === 0) {

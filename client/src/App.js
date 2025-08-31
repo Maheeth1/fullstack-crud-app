@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import CustomerListPage from './pages/CustomerListPage';
 import CustomerFormPage from './pages/CustomerFormPage';
 import CustomerDetailPage from './pages/CustomerDetailPage';
-// No need to import App.css anymore
+import NotFoundPage from './pages/NotFoundPage'; 
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
             <Route path="/add" element={<CustomerFormPage />} />
             <Route path="/edit/:id" element={<CustomerFormPage />} />
             <Route path="/customer/:id" element={<CustomerDetailPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
       </div>

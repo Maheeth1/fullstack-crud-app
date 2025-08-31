@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import AddressList from '../components/AddressList'; // Import AddressList
-import AddressForm from '../components/AddressForm'; // Import AddressForm
+import AddressList from '../components/AddressList'; 
+import AddressForm from '../components/AddressForm'; 
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const API_URL = 'http://localhost:5000/api';
 
@@ -53,7 +54,7 @@ function CustomerDetailPage() {
         }
     };
 
-    if (loading) return <p className="text-center mt-8">Loading...</p>;
+    if (loading) return <LoadingSpinner />;
     if (error) return <p className="text-center mt-8 text-red-500">{error}</p>;
     if (!customer) return <p className="text-center mt-8">No customer found.</p>;
 
