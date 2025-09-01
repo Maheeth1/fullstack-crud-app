@@ -1,11 +1,11 @@
-Full-Stack Customer & Address Management System 
+### Full-Stack Customer & Address Management System 
 
 ---
 
 
 A comprehensive CRUD application built with React, Node.js, Express, and SQLite. This project allows for the complete management of customer data and their associated multiple addresses through a modern, responsive, and user-friendly interface. It serves as a practical demonstration of full-stack development skills.
 
-## Key Features ✨
+## Key Features 
 - Full CRUD Functionality: Complete Create, Read, Update, and Delete operations for both Customers and their multiple Addresses.
 
 - Component-Based Frontend: Built with React and structured with a clean container/presentational component architecture for maintainability and scalability.
