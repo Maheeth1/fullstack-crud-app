@@ -5,8 +5,6 @@ Full-Stack Customer & Address Management System
 
 A comprehensive CRUD application built with React, Node.js, Express, and SQLite. This project allows for the complete management of customer data and their associated multiple addresses through a modern, responsive, and user-friendly interface. It serves as a practical demonstration of full-stack development skills.
 
---
-
 ## Key Features ✨
 - Full CRUD Functionality: Complete Create, Read, Update, and Delete operations for both Customers and their multiple Addresses.
 
@@ -56,12 +54,8 @@ A comprehensive CRUD application built with React, Node.js, Express, and SQLite.
 ## Getting Started
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
---
-
 ### Prerequisites
 You must have Node.js (version 14 or higher) installed on your system, which includes the npm package manager.
-
---
 
 ### Installation & Setup
 Clone the repository:
@@ -69,8 +63,8 @@ Clone the repository:
 ```
 git clone https://github.com/your-username/customer-management-app.git
 cd customer-management-app
-# Setup and run the Backend Server:
 
+# Setup and run the Backend Server:
 # Navigate to the server directory
 cd server
 
@@ -118,6 +112,7 @@ The backend server provides the following RESTful API endpoints:
 ## Project Structure
 The project is organized into two main folders, client and server, to maintain a clear separation of concerns.
 
+```
 customer-management-app/
 ├── client/         # Contains the React.js frontend application
 │   ├── public/
@@ -128,3 +123,4 @@ customer-management-app/
 └── server/         # Contains the Node.js/Express backend API
     ├── database.db
     └── index.js
+```
