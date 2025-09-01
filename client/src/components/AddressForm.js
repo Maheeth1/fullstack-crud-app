@@ -27,7 +27,17 @@ function AddressForm({ customerId, onAddressAdded }) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <input name="city" value={address.city} onChange={handleChange} placeholder="City" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required />
                 <input name="state" value={address.state} onChange={handleChange} placeholder="State" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required />
-                <input name="pin_code" value={address.pin_code} onChange={handleChange} placeholder="Pin Code" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required />
+                <input name="pin_code" type="text" inputMode="numeric" maxLength="6" value={address.pin_code}
+                    onChange={(e) => {
+                        const onlyNums = e.target.value.replace(/[^0-9]/g, ""); // keep only digits
+                        handleChange({
+                        target: { name: "pin_code", value: onlyNums },
+                        });
+                    }}
+                    placeholder="Pin Code" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                    required
+                />
+
             </div>
             <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Save Address</button>
         </form>
