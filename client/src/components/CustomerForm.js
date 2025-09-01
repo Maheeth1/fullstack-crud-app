@@ -93,7 +93,15 @@ function CustomerForm({ initialData, onSubmit, isEditMode }) {
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <input name="city" value={addr.city} onChange={(e) => handleAddressChange(index, e)} placeholder="City" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required />
                                 <input name="state" value={addr.state} onChange={(e) => handleAddressChange(index, e)} placeholder="State" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required />
-                                <input name="pin_code" value={addr.pin_code} onChange={(e) => handleAddressChange(index, e)} placeholder="Pin Code" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required />
+                                <input name="pin_code" type="text" inputMode="numeric" maxLength="6" value={addr.pin_code}
+                                    onChange={(e) => {
+                                        const onlyNums = e.target.value.replace(/[^0-9]/g, ""); // keep only digits
+                                        handleChange({
+                                        target: { name: "pin_code", value: onlyNums },
+                                        });}}
+                                    placeholder="Pin Code" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                                    required
+                                />
                             </div>
                         </div>
                     ))}
