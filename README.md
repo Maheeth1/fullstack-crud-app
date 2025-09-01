@@ -90,7 +90,7 @@ npm install
 # Start the React application
 npm start
 ```
-Your browser should automatically open to http://localhost:3000 with the application running.
+Your browser should automatically open to `http://localhost:3000` with the application running.
 
 ---
 
