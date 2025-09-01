@@ -13,7 +13,7 @@ const db = new sqlite3.Database(DB_SOURCE, (err) => {
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 first_name TEXT NOT NULL,
                 last_name TEXT NOT NULL,
-                phone_number TEXT NOT NULL UNIQUE
+                phone_number TEXT NOT NULL UNIQUE CHECK (phone_number NOT GLOB '*[0-9]*' AND length(phone_number) BETWEEN 10 AND 15)
             )`;
 
         const createAddressTableSql = `
@@ -23,7 +23,7 @@ const db = new sqlite3.Database(DB_SOURCE, (err) => {
                 address_details TEXT NOT NULL,
                 city TEXT NOT NULL,
                 state TEXT NOT NULL,
-                pin_code TEXT NOT NULL,
+                pin_code TEXT NOT NULL CHECK (pin_code NOT GLOB '*[0-9]*' AND length(pin_code) = 6),
                 FOREIGN KEY (customer_id) REFERENCES customers (id) ON DELETE CASCADE
             )`;
 

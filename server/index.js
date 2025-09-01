@@ -25,6 +25,16 @@ app.post("/api/customers", (req, res) => {
         return res.status(400).json({ "error": "Missing required fields." });
     }
 
+    if (!numberRegex.test(phone_number)) {
+        return res.status(400).json({ "error": "Phone number must contain only numbers." });
+    }
+
+    for (const addr of addresses) {
+        if (!numberRegex.test(addr.pin_code)) {
+            return res.status(400).json({ "error": `Pin code "${addr.pin_code}" must contain only numbers.` });
+        }
+    }
+
     const customerSql = `INSERT INTO customers (first_name, last_name, phone_number) VALUES (?,?,?)`;
     const customerParams = [first_name, last_name, phone_number];
 
