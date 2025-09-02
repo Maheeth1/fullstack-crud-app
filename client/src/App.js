@@ -6,11 +6,13 @@ import CustomerListPage from './pages/CustomerListPage';
 import CustomerFormPage from './pages/CustomerFormPage';
 import CustomerDetailPage from './pages/CustomerDetailPage';
 import NotFoundPage from './pages/NotFoundPage'; 
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   return (
     <Router>
       <div className="bg-gray-100 min-h-screen">
+        <LoadingScreen />
         {/* Navigation Bar */}
         <nav className="bg-gray-800 text-white p-4 shadow-lg">
           <div className="container mx-auto flex justify-between items-center">
