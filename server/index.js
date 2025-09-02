@@ -9,7 +9,9 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
 
+const numberRegex = /^\d+$/;
 const PORT = 5000;
 
 // =================================================================
@@ -18,6 +20,7 @@ const PORT = 5000;
 
 // POST: Create a new customer
 app.post("/api/customers", (req, res) => {
+    console.log("Incoming request body:", req.body);
     const { first_name, last_name, phone_number, addresses } = req.body;
 
     // Server-side validation

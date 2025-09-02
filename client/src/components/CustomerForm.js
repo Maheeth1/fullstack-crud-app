@@ -55,30 +55,23 @@ function CustomerForm({ initialData, onSubmit, isEditMode }) {
                 <input id="last_name" name="last_name" value={formData.last_name} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
             </div>
             <div>
-                <label 
-                    htmlFor="phone_number" 
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                    >
-                    Phone Number
-                </label>
+                <label htmlFor="phone_number" className="block mb-2 text-sm font-medium text-gray-900">Phone Number</label>
                 <input 
                     id="phone_number" 
                     name="phone_number" 
                     type="text" 
                     inputMode="numeric" 
                     pattern="[0-9]{10}" 
-                    maxLength="10" 
                     value={formData.phone_number} 
                     onChange={(e) => {
-                        const onlyNums = e.target.value.replace(/[^0-9]/g, ""); // remove non-digits
+                        const onlyNums = e.target.value.replace(/[^0-9]/g, "").slice(0, 10);
                         handleChange({
-                        target: { name: "phone_number", value: onlyNums },
+                            target: { name: "phone_number", value: onlyNums },
                         });
                     }} 
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
                     required 
                 />
-
             </div>
             
             {!isEditMode && (
@@ -93,13 +86,20 @@ function CustomerForm({ initialData, onSubmit, isEditMode }) {
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <input name="city" value={addr.city} onChange={(e) => handleAddressChange(index, e)} placeholder="City" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required />
                                 <input name="state" value={addr.state} onChange={(e) => handleAddressChange(index, e)} placeholder="State" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required />
-                                <input name="pin_code" type="text" inputMode="numeric" maxLength="6" value={addr.pin_code}
+                                <input 
+                                    name="pin_code" 
+                                    type="text" 
+                                    inputMode="numeric" 
+                                    pattern="[0-9]{6}" 
+                                    value={addr.pin_code}
                                     onChange={(e) => {
-                                        const onlyNums = e.target.value.replace(/[^0-9]/g, ""); // keep only digits
-                                        handleChange({
-                                        target: { name: "pin_code", value: onlyNums },
-                                        });}}
-                                    placeholder="Pin Code" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                                        const onlyNums = e.target.value.replace(/[^0-9]/g, "").slice(0, 6);
+                                        handleAddressChange(index, {
+                                          target: { name: "pin_code", value: onlyNums },
+                                        });
+                                    }}
+                                    placeholder="Pin Code" 
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                                     required
                                 />
                             </div>

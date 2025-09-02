@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import AddressList from '../components/AddressList'; 
 import AddressForm from '../components/AddressForm'; 
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -34,11 +35,11 @@ function CustomerDetailPage() {
     const handleAddNewAddress = async (newAddress) => {
         try {
             await axios.post(`${API_URL}/customers/${id}/addresses`, newAddress);
-            alert('New address added successfully!');
+            toast.success('Address added successfully!');
             setShowAddForm(false);
             fetchCustomerDetails(); // Refresh data
         } catch (err) {
-            alert('Failed to add new address.');
+            toast.error(err.response?.data?.error || 'Failed to add address.');
         }
     };
     
@@ -46,10 +47,10 @@ function CustomerDetailPage() {
         if (window.confirm('Are you sure you want to delete this address?')) {
             try {
                 await axios.delete(`${API_URL}/addresses/${addressId}`);
-                alert('Address deleted successfully!');
+                toast.success('Address deleted successfully!');
                 fetchCustomerDetails(); // Refresh data
             } catch (err) {
-                alert('Failed to delete address.');
+                toast.error(err.response?.data?.error || 'Failed to delete address.');
             }
         }
     };

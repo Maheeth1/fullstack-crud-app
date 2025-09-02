@@ -27,7 +27,7 @@ const LoadingScreen = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[100] bg-black flex items-center justify-center"
+          className="fixed inset-0 z-[100] bg-white flex items-center justify-center"
         >
           <div className="text-center space-y-8">
             {/* Logo and Name */}
@@ -37,10 +37,10 @@ const LoadingScreen = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-2"
             >
-              <div className="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center">
-                <span className="text-3xl font-bold text-black">CM</span>
+              <div className="w-20 h-20 mx-auto bg-black rounded-full flex items-center justify-center">
+                <span className="text-3xl font-bold text-white">CM</span>
               </div>
-              <h1 className="text-4xl font-bold text-white">
+              <h1 className="text-4xl font-bold text-black">
                 CUSTOMER MANAGEMENT APP
               </h1>
             </motion.div>
@@ -65,22 +65,22 @@ const LoadingScreen = () => {
                       repeat: Infinity,
                       delay: i * 0.2
                     }}
-                    className="w-3 h-3 bg-white rounded-full"
+                    className="w-3 h-3 bg-black rounded-full"
                   />
                 ))}
               </div>
 
               {/* Progress Bar */}
-              <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden mx-auto">
+              <div className="w-64 h-2 bg-gray-300 rounded-full overflow-hidden mx-auto">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.1 }}
-                  className="h-full bg-white rounded-full"
+                  className="h-full bg-black rounded-full"
                 />
               </div>
 
-              <p className="text-gray-400 text-sm">Loading... {progress}%</p>
+              <p className="text-gray-600 text-sm">Loading... {progress}%</p>
             </motion.div>
           </div>
         </motion.div>

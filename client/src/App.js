@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import CustomerListPage from './pages/CustomerListPage';
 import CustomerFormPage from './pages/CustomerFormPage';
 import CustomerDetailPage from './pages/CustomerDetailPage';
@@ -12,6 +13,7 @@ function App() {
   return (
     <Router>
       <div className="bg-gray-100 min-h-screen">
+        <Toaster position="bottom-right" reverseOrder={false} />
         <LoadingScreen />
         {/* Navigation Bar */}
         <nav className="bg-gray-800 text-white p-4 shadow-lg">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import CustomerForm from '../components/CustomerForm'; 
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -19,7 +20,10 @@ function CustomerFormPage() {
                     const { addresses, ...customerData } = response.data.data;
                     setInitialData(customerData); // We only edit customer details here
                 })
-                .catch(error => console.error("Error fetching customer data:", error));
+                .catch(error => {
+                    console.error("Error fetching customer data:", error);
+                    toast.error('Failed to load customer data.');
+                });
         }
     }, [id, isEditMode]);
 
@@ -27,15 +31,15 @@ function CustomerFormPage() {
         try {
             if (isEditMode) {
                 await axios.put(`${API_URL}/customers/${id}`, formData);
-                alert('Customer updated successfully!');
+                toast.success('Customer data updated successfully!');
             } else {
                 await axios.post(`${API_URL}/customers`, formData);
-                alert('Customer created successfully!');
+                toast.success('Customer created successfully!');
             }
             navigate('/');
         } catch (error) {
             console.error('Error saving customer:', error);
-            alert(`Error: ${error.response?.data?.error || 'Could not save customer.'}`);
+            toast.error(error.response?.data?.error || 'Failed to save customer data.');
         }
     };
 

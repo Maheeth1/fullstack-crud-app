@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import CustomerList from '../components/CustomerList'; // Import the new component
 
 const API_URL = 'http://localhost:5000/api';
@@ -46,11 +47,11 @@ function CustomerListPage() {
         if (window.confirm('Are you sure you want to delete this customer? All associated addresses will also be removed.')) {
             try {
                 await axios.delete(`${API_URL}/customers/${id}`);
-                alert('Customer deleted successfully!');
+                toast.success('Customer deleted successfully!');
                 fetchCustomers();
             } catch (error) {
                 console.error('Error deleting customer:', error);
-                alert('Failed to delete customer.');
+                toast.error('Failed to delete customer.');
             }
         }
     };
